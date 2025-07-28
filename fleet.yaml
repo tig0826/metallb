@@ -6,4 +6,10 @@ helm:
   releaseName: metallb-0-1732191886
   valuesFiles:
     - values.yaml
-
+diff:
+  comparePatches:
+    - apiVersion: apiextensions.k8s.io/v1
+      kind: CustomResourceDefinition
+      name: bgppeers.metallb.io
+      operations:
+        - {"op":"remove","path":"/spec/conversion/webhook/clientConfig/caBundle"}
